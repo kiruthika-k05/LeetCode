@@ -4,7 +4,7 @@ class Solution {
         int n = nums.length;
         int[] result = new int[n];
         Arrays.fill(result,-1);
-        for(int i = 2*n-1; i >= 0; i--){
+        for(int i = 2*n; i >= 0; i--){
             int idx = i % n;
             while(!st.isEmpty() && st.peek() <= nums[idx]) {
 				st.pop();
