@@ -21,7 +21,7 @@ class Solution {
         if (left>right){
             return null;
         }
-        int mid= left+(right-left)/2;
+        int mid= (left+right)/2;
         TreeNode node= new TreeNode(nums[mid]);
         node.left=convert(nums,left,mid-1);
         node.right=convert(nums,mid+1,right);
