@@ -14,25 +14,36 @@
  * }
  */
 class Solution {
-    public void inorder(TreeNode root, List<Integer> trav){
-        if(root != null){
-            inorder(root.left, trav);
-            trav.add(root.val);
-            inorder(root.right, trav);
-        }
-    }
-    public boolean checkList(List<Integer> trav){
-        for(int i = 1; i < trav.size(); i++){
-            if(trav.get(i) <= trav.get(i - 1)){
-                return false;
-            }
-        }
-        return true;
-    }
     public boolean isValidBST(TreeNode root) {
-        List<Integer> trav = new ArrayList<>();
-        inorder(root,trav);
-        boolean result = checkList(trav) ;
-        return result;
+        return validate(root, Long.MIN_VALUE, Long.MAX_VALUE);
+    }
+
+    private boolean validate(TreeNode root, long min, long max) {
+        if (root == null) return true;
+
+        if (root.val <= min || root.val >= max) return false;
+
+        return validate(root.left, min, root.val) &&
+               validate(root.right, root.val, max);
     }
 }
+
+
+
+
+
+// class Solution {
+//     public boolean isValidBST(TreeNode root) {
+//         if(root == null){
+//             return true;
+//         }   
+//         if(root.left != null && root.val < root.left.val){
+//             return false;
+//         }
+//         if(root.right != null && root.val > root.right.val){
+//             return false;
+//         }
+//         if(root.val )
+//         return true;
+//     }
+// }
